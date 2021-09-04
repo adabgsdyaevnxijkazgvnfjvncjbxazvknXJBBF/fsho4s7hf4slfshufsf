@@ -295,7 +295,7 @@ function Kavo.CreateLib(kavName, themeList)
     down.Name = "down"
     down.Parent = MainHeader
     down.BackgroundTransparency = 1.000
-    down.Position = UDim2.new(0.95, 0, 0.137999997, 0)
+    down.Position = UDim2.new(0.95, 0.6, 0.137999997, 0)
     down.Size = UDim2.new(0, 21, 0, 21)
     down.ZIndex = 2
     down.Image = "rbxassetid://3926305904"
