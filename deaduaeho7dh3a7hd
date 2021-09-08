@@ -112,19 +112,19 @@ local themeStyles = {
         TextColor = Color3.fromRGB(152, 99, 53),
         ElementColor = Color3.fromRGB(24, 24, 24)
     },
+    Prime = {
+        SchemeColor = Color3.fromRGB(202, 171, 70),
+    	Background = Color3.fromRGB(255,255,255),
+    	Header = Color3.fromRGB(200, 200, 200),
+    	TextColor = Color3.fromRGB(20,20,20),
+    	ElementColor = Color3.fromRGB(200, 200, 200)
+    },
     Serpent = {
         SchemeColor = Color3.fromRGB(0, 166, 58),
         Background = Color3.fromRGB(31, 41, 43),
         Header = Color3.fromRGB(22, 29, 31),
         TextColor = Color3.fromRGB(255,255,255),
         ElementColor = Color3.fromRGB(22, 29, 31)
-    },
-    Prime = {
-    SchemeColor = Color3.fromRGB(202, 171, 70),
-    Background = Color3.fromRGB(255,255,255),
-    Header = Color3.fromRGB(200, 200, 200),
-    TextColor = Color3.fromRGB(20,20,20),
-    ElementColor = Color3.fromRGB(200, 200, 200)
     }
 }
 local oldTheme = ""
