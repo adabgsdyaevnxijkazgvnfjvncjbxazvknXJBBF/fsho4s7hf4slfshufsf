@@ -105,7 +105,7 @@ local themeStyles = {
         TextColor = Color3.fromRGB(119, 209, 138),
         ElementColor = Color3.fromRGB(24, 24, 24)
     },
-    Synapse = {
+    Prime = {
          SchemeColor = Color3.fromRGB(202, 171, 70),
     	Background = Color3.fromRGB(255,255,255),
     	Header = Color3.fromRGB(200, 200, 200),
