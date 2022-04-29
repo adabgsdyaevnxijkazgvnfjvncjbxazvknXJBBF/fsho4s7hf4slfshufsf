@@ -112,13 +112,6 @@ local themeStyles = {
         TextColor = Color3.fromRGB(152, 99, 53),
         ElementColor = Color3.fromRGB(24, 24, 24)
     },
-    Prime = {
-         SchemeColor = Color3.fromRGB(202, 171, 70),
-    	Background = Color3.fromRGB(255,255,255),
-    	Header = Color3.fromRGB(200, 200, 200),
-    	TextColor = Color3.fromRGB(20,20,20),
-    	ElementColor = Color3.fromRGB(200, 200, 200)
-    },
     Serpent = {
         SchemeColor = Color3.fromRGB(0, 166, 58),
         Background = Color3.fromRGB(31, 41, 43),
@@ -174,8 +167,6 @@ function Kavo.CreateLib(kavName, themeList)
         themeList = themeStyles.Sentinel
     elseif themeList == "Synapse" then
         themeList = themeStyles.Synapse
-    elseif themeList == "Prime" then
-        themeList = themeStyles.Prime
     elseif themeList == "Serpent" then
         themeList = themeStyles.Serpent
     else
@@ -277,7 +268,7 @@ function Kavo.CreateLib(kavName, themeList)
     title.TextColor3 = Color3.fromRGB(245, 245, 245)
     title.TextSize = 16.000
     title.TextXAlignment = Enum.TextXAlignment.Left
-	
+
     close.Name = "close"
     close.Parent = MainHeader
     close.BackgroundTransparency = 1.000
@@ -288,10 +279,6 @@ function Kavo.CreateLib(kavName, themeList)
     close.ImageRectOffset = Vector2.new(284, 4)
     close.ImageRectSize = Vector2.new(24, 24)
     close.MouseButton1Click:Connect(function()
-    	turn = 0
-	SPIN = 0
-	BuySpins = 0
-	AFK = 0
         game.TweenService:Create(close, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
             ImageTransparency = 1
         }):Play()
