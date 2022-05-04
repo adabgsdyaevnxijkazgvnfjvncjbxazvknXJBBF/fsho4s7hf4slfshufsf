@@ -268,7 +268,12 @@ function Kavo.CreateLib(kavName, themeList)
     title.TextColor3 = Color3.fromRGB(245, 245, 245)
     title.TextSize = 16.000
     title.TextXAlignment = Enum.TextXAlignment.Left
-
+    
+local autofarmTurn = 0
+local autoabilitysTurn = 0
+local autoquestTurn = 0
+local autoattackTurn = 0
+local autoformTurn = 0
     close.Name = "close"
     close.Parent = MainHeader
     close.BackgroundTransparency = 1.000
@@ -288,11 +293,11 @@ function Kavo.CreateLib(kavName, themeList)
 			Position = UDim2.new(0, Main.AbsolutePosition.X + (Main.AbsoluteSize.X / 2), 0, Main.AbsolutePosition.Y + (Main.AbsoluteSize.Y / 2))
 		}):Play()
         wait(1)
-	local autofarmTurn = 0
-	local autoabilitysTurn = 0
-	local autoquestTurn = 0
-	local autoattackTurn = 0
-	local autoformTurn = 0
+	autofarmTurn = 0
+	autoabilitysTurn = 0
+	autoquestTurn = 0
+	autoattackTurn = 0
+	autoformTurn = 0
 	ScreenGui:Destroy()
     end)
 
