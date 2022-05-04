@@ -289,6 +289,8 @@ function Kavo.CreateLib(kavName, themeList)
 		}):Play()
         wait(1)
         ScreenGui:Destroy()
+	autoformTurn == 0 
+	autofarmTurn == 0
     end)
 
     MainSide.Name = "MainSide"
