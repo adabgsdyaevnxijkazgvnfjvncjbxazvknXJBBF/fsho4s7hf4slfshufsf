@@ -1,9 +1,3 @@
-autofarmTurn = 0
-autoabilitysTurn = 0
-autoquestTurn = 0
-autoattackTurn = 0
-autoformTurn = 0
-
 local Kavo = {}
 
 local tween = game:GetService("TweenService")
@@ -295,11 +289,6 @@ function Kavo.CreateLib(kavName, themeList)
 		}):Play()
         wait(1)
         ScreenGui:Destroy()
-	autofarmTurn = 0
-	autoabilitysTurn = 0
-	autoquestTurn = 0
-	autoattackTurn = 0
-	autoformTurn = 0
     end)
 
     MainSide.Name = "MainSide"
