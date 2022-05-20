@@ -1,0 +1,178 @@
+local function isPlayer(plr)
+    for i,name in pairs(game.Players:GetChildren()) do
+        if name.Name == plr.Name then
+            
+           return true
+        end
+    end
+    
+    return false
+end
+
+local function Add(plr, info)
+    if game.Workspace:FindFirstChild(plr):FindFirstChild("Head"):FindFirstChild("BillboardGui") == nil then
+        local board = Instance.new("BillboardGui")
+        board.Parent = game.Workspace[plr].Head
+        board.Size = UDim2.new(1,0,1,0)
+        board.StudsOffset = Vector3.new(-2,3,0)
+        board.AlwaysOnTop = true
+        
+        bar = Instance.new("TextLabel",board) --//Creates the red background
+        bar.Transparency = 1
+        bar.TextTransparency = 0
+        bar.BorderSizePixel = 0
+        bar.Size = UDim2.new(5,0,5,0)
+        if info == "Murder" then
+            bar.TextColor3 = Color3.new(255, 0, 0)
+        end
+        if info == "Sheriff" then
+            bar.TextColor3 = Color3.new(0, 0, 255)
+        end
+        bar.Font = "SourceSansBold"
+        bar.TextScaled = true
+        bar.Text = info
+    end
+end
+
+for i, plr in pairs(game.Players:GetChildren()) do
+    if plr.Backpack:FindFirstChild("Knife") == nil then
+        else
+        Add(plr.Name, "Murder")
+    end
+    if plr.Backpack:FindFirstChild("Gun") == nil then
+        else
+        Add(plr.Name, "Sheriff")
+    end
+end
+
+for i, plr in pairs(game.Workspace:GetChildren()) do
+    if isPlayer(plr) then
+        if plr:FindFirstChild("Knife") == nil then
+            else
+            Add(plr.Name, "Murder")
+        end
+        if plr:FindFirstChild("Gun") == nil then
+            else
+            Add(plr.Name, "Sheriff")
+        end
+    end
+end
+    
+
+local color = BrickColor.new(50,0,250)
+local transparency = .8
+
+local Players = game:GetService("Players")
+local function _ESP(c)
+  repeat wait() until c.PrimaryPart ~= nil
+  for i,p in pairs(c:GetChildren()) do
+    if p.ClassName == "Part" or p.ClassName == "MeshPart" then
+      if p:FindFirstChild("shit") then p.shit:Destroy() end
+        local a = Instance.new("BoxHandleAdornment",p)
+        a.Name = "shit"
+        a.Size = p.Size
+        a.Color = color
+        a.Transparency = transparency
+        a.AlwaysOnTop = true    
+        a.Visible = true    
+        a.Adornee = p
+        a.ZIndex = true    
+    end
+  end
+end
+local function ESP()
+  for i,v in pairs(Players:GetChildren()) do
+    if v ~= game.Players.LocalPlayer then
+      if v.Character then
+        _ESP(v.Character)
+      end
+      v.CharacterAdded:Connect(function(chr)
+        _ESP(chr)
+      end)
+    end
+  end
+  Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(chr)
+      _ESP(chr)
+    end)  
+  end)
+end
+ESP()
+
+local color = "BloodTheme"
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/adabgsdyaevnxijkazgvnfjvncjbxazvknXJBBF/fsho4s7hf4slfshufsf/main/AHD"))()
+local Window = Library.CreateLib("ScriptX | Murder Mystery 2", color)
+
+local Home = Window:NewTab("Home")
+local LocalPlayer = Window:NewTab("LocalPlayer")
+local Settings = Window:NewTab("Settings")
+
+local HomeSection = Home:NewSection("Home")
+
+HomeSection:NewLabel("Welcome "..game.Players.LocalPlayer.Name)
+HomeSection:NewLabel("Credits: ScriptXDeveloper#0248")
+HomeSection:NewLabel("Version 1")
+HomeSection:NewLabel("Murder Mystery 2 Script")
+
+local Local = LocalPlayer:NewSection("LocalPlayer") 
+Local:NewSlider("WalkSpeed", "Change your own walkspeed", 200, 16, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+Local:NewSlider("JumpPower", "Change your own jumppower", 200, 16, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+Local:NewSlider("Gravity", "Change your own gravity", 500, 0, function(s)
+    workspace.Gravity = s
+end)
+Local:NewButton("Kill Yourself", "Kills you", function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end)
+
+local SettingsSection = Settings:NewSection("Settings") 
+SettingsSection:NewKeybind("Toggle UI Keybind", "Click this then press a button to set new keybind.", Enum.KeyCode.P, function()
+    Library:ToggleUI()
+end)
+local autokick = 0
+SettingsSection:NewToggle("Autokick when someone is in the server", "Toggle this to kick yourself when someone is in.", function(state)
+    if autokick == 0 then
+        autokick = 1
+        repeat
+            wait(0.01)
+            if (#game.Players:GetChildren() > 1) and (autokick == 1) then
+                game.Players.LocalPlayer:Kick("Someone is in the server")
+            end
+        until autokick == 0
+    else
+        autokick = 0
+    end
+end)
+local antiafk = 0
+SettingsSection:NewToggle("AntiAfk", "Toggle this to not get kick by afk.", function(state)
+    if antiafk == 0 then
+        antiafk = 1
+    else
+        antiafk = 0
+    end
+end)
+
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    if antiafk == 1 then
+        vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        wait(1)
+        vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    end
+end)
+
+while wait() do
+  for i, plr in pairs(game.Players:GetChildren()) do
+      plr.Backpack.ChildAdded:Connect(function(item)
+          if item.Name == "Knife" then
+              Add(plr.Name, "Murder")
+          end
+          if item.Name == "Gun" then
+              Add(plr.Name, "Sheriff")
+          end
+      end)
+  end
+end
