@@ -1,0 +1,69 @@
+for i,v in pairs(game:GetService("Lighting"):GetChildren()) do
+    v:Destroy()
+end
+
+local function Add(plr)
+  if game.Workspace:FindFirstChild(plr.Name):FindFirstChild("Head"):FindFirstChild("BillboardGui") == nil then
+      local board = Instance.new("BillboardGui")
+      board.Parent = game.Workspace[plr.Name].Head
+      board.Size = UDim2.new(1,0,1,0)
+      board.StudsOffset = Vector3.new(-2,3,0)
+      board.AlwaysOnTop = true
+      
+      bar = Instance.new("TextLabel",board) --//Creates the red background
+      bar.Transparency = 1
+      bar.TextTransparency = 0
+      bar.BorderSizePixel = 0
+      bar.Size = UDim2.new(5,0,5,0)
+      bar.TextColor3 = Color3.new(255, 0, 0)
+      bar.Font = "SourceSansBold"
+      bar.TextScaled = true
+      bar.Text = plr.Name
+  end
+end
+
+local color = BrickColor.new(50,0,250)
+local transparency = .8
+
+local Players = game:GetService("Players")
+local function _ESP(c)
+  repeat wait() until c.PrimaryPart ~= nil
+  for i,p in pairs(c:GetChildren()) do
+    if p.ClassName == "Part" or p.ClassName == "MeshPart" then
+      if p:FindFirstChild("shit") then p.shit:Destroy() end
+      if p.Name == "HumanoidRootPart" then
+        else
+          local a = Instance.new("BoxHandleAdornment",p)
+          a.Name = "shit"
+          a.Size = p.Size
+          a.Color = color
+          a.Transparency = transparency
+          a.AlwaysOnTop = true    
+          a.Visible = true    
+          a.Adornee = p
+          a.ZIndex = true    
+        end
+    end
+  end
+end
+local function ESP()
+  for i,v in pairs(Players:GetChildren()) do
+    if v ~= game.Players.LocalPlayer then
+      if v.Character then
+        _ESP(v.Character)
+        Add(v.Character.Name)
+      end
+      v.CharacterAdded:Connect(function(chr)
+        _ESP(chr)
+        Add(chr)
+      end)
+    end
+  end
+  Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(chr)
+      _ESP(chr)
+      Add(chr)
+    end)  
+  end)
+end
+ESP()
