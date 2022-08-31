@@ -1,5 +1,5 @@
 local Kavo = {}
-
+Stop = 0
 local tween = game:GetService("TweenService")
 local tweeninfo = TweenInfo.new
 local input = game:GetService("UserInputService")
@@ -289,6 +289,8 @@ function Kavo.CreateLib(kavName, themeList)
 		}):Play()
         wait(1)
         ScreenGui:Destroy()
+	Stop = 1
+	print("Stopped")
     end)
 
     MainSide.Name = "MainSide"
