@@ -1,7 +1,9 @@
 local DiscordLib = {}
 
+
 function DiscordLib:try(e)
     print("ee")
 end
 
 return DiscordLib
+print("loaded")
