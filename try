@@ -3,7 +3,7 @@ print("loaded")
 local DiscordLib = {}
 
 
-function DiscordLib(e)
+function DiscordLib:Window(text)
     print("ee")
 end
 
