@@ -1,4 +1,991 @@
-print("ok")
-function dd()
-    print("ee")
+print("got it")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CloverMain/CloverMain/main/Password"))()
+if table.find(Whitelist, game.Players.LocalPlayer.UserId) or game:GetService("MarketplaceService"):UserOwnsGamePassAsync(game.Players.LocalPlayer.UserId,86221965) then
+    local vu = game:GetService("VirtualUser")
+    local vim = game:service("VirtualInputManager")
+
+    function GetTo(x,y,z)
+        if x and y and z then
+            local start = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+            local PathfindingService = game:GetService("PathfindingService")
+            local path = PathfindingService:CreatePath()
+            local Position = Vector3.new(x,y,z)
+            path:ComputeAsync(start.Position, Position)
+            local waypoints = path:GetWaypoints()
+
+            humanoid = game.Players.LocalPlayer.Character.Humanoid
+            for _, waypoint in pairs(waypoints) do
+                if waypoint.Action == Enum.PathWaypointAction.Jump then
+                    humaoid:ChangeState(Enum.HumanoidStateType.Jumping)
+                end
+                humanoid:MoveTo(waypoint.Position)
+                humanoid.MoveToFinished:Wait()
+            end
+        end
+    end
+
+    function TpTo(x,y,z)
+        if x and y and z then
+            game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(x,y,z)
+        end
+    end
+
+    function TweenTo(x,y,z, Time)
+        if x and y and z then
+            if Time == nil then
+                Time = 1
+            end
+            local TweenService = game:GetService("TweenService")
+            local part = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+            local goal = {}
+            goal.CFrame = CFrame.new(x,y,z)
+            local tweenInfo = TweenInfo.new(Time, Enum.EasingStyle.Linear)
+            local tween = TweenService:Create(part, tweenInfo, goal)
+            tween:Play()
+            tween.Completed:Wait()
+        end
+    end
+
+    function ServerHop()
+        local Player = game.Players.LocalPlayer    
+        local Http = game:GetService("HttpService")
+        local TPS = game:GetService("TeleportService")
+        local Api = "https://games.roblox.com/v1/games/"
+        
+        local _place,_id = game.PlaceId, game.JobId
+        local _servers = Api.._place.."/servers/Public?sortOrder=Desc&limit=100"
+        function ListServers(cursor)
+        local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+        return Http:JSONDecode(Raw)
+        end
+        
+        local Next; repeat
+        local Servers = ListServers(Next)
+        for i,v in next, Servers.data do
+            if v.playing < v.maxPlayers and v.id ~= _id then
+                local s,r = pcall(TPS.TeleportToPlaceInstance,TPS,_place,v.id,Player)
+                if s then break end
+            end
+        end
+        
+        Next = Servers.nextPageCursor
+        until not Next
+    end
+
+    function Replay()
+        loadfile("AutoTask.txt")()
+    end
+    function ClearTasks()
+        writefile("AutoTask.txt", "")
+    end
+    function CopyTasks()
+        setclipboard(readfile("AutoTask.txt"))
+    end
+    function ListTasks()
+        print("\n"..readfile("AutoTask.txt"))
+    end
+    function CopyPosition()
+        print(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position)
+        setclipboard(tostring(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position))
+    end
+
+    function A(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "A", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "A", false, game)
+        end
+    end
+    function B(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "B", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "B", false, game)
+        end
+    end
+    function C(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "C", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "C", false, game)
+        end
+    end
+    function D(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "D", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "D", false, game)
+        end
+    end
+    function E(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "E", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "E", false, game)
+        end
+    end
+    function F(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "F", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "F", false, game)
+        end
+    end
+    function G(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "G", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "G", false, game)
+        end
+    end
+    function H(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "H", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "H", false, game)
+        end
+    end
+    function I(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "I", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "I", false, game)
+        end
+    end
+    function J(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "J", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "J", false, game)
+        end
+    end
+    function K(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "K", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "K", false, game)
+        end
+    end
+    function L(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "L", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "L", false, game)
+        end
+    end
+    function M(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "M", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "M", false, game)
+        end
+    end
+    function N(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "N", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "N", false, game)
+        end
+    end
+    function O(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "O", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "O", false, game)
+        end
+    end
+    function P(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "P", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "P", false, game)
+        end
+    end
+    function Q(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "Q", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "Q", false, game)
+        end
+    end
+    function R(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "R", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "R", false, game)
+        end
+    end
+    function S(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "S", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "S", false, game)
+        end
+    end
+    function T(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "T", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "T", false, game)
+        end
+    end
+    function U(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "U", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "U", false, game)
+        end
+    end
+    function V(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "V", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "V", false, game)
+        end
+    end
+    function W(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "W", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "W", false, game)
+        end
+    end
+    function X(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "X", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "X", false, game)
+        end
+    end
+    function Y(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "Y", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "Y", false, game)
+        end
+    end
+    function Z(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendKeyEvent(true, "Z", false, game)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendKeyEvent(false, "Z", false, game)
+        end
+    end
+    function LeftClick(X, Y, Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if X == nil then
+            X = 100
+        end
+        if Y == nil then
+            Y = 100
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendMouseButtonEvent(X, Y, 0, true, game, 1)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendMouseButtonEvent(X, Y, 0, false, game, 1)
+        end
+    end
+    function RightClick(X, Y, Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if X == nil then
+            X = 100
+        end
+        if Y == nil then
+            Y = 100
+        end
+        for x = 1,Times do
+            wait(Delay)
+            
+            vim:SendMouseButtonEvent(X, Y, 0, true, game, 2)
+            if Hold ~= nil then
+                wait(Hold)
+            end
+            vim:SendMouseButtonEvent(X, Y, 0, false, game, 2)
+        end
+    end
+
+    if not isfile("AutoTask.txt") then
+        writefile("AutoTask.txt","")
+    end
+
+    function Add(txt)
+        if (not isfile("AutoTask.txt")) then
+            --file doesn't exist so create it
+            writefile("AutoTask.txt", txt.."\n");
+        end
+        appendfile("AutoTask.txt", txt.."\n");
+    end
+    function addGetTo()
+        txt = "GetTo("..tostring(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position)..")"
+        Add(txt)
+    end
+    function addTpTo()
+        txt = "TpTo("..tostring(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position)..")"
+        Add(txt)
+    end
+    function addTweenTo()
+        txt = "TweenTo("..tostring(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position)..")"
+        Add(txt)
+    end
+    function addServerHop()
+        txt = "ServerHop()"
+        Add(txt)
+    end
+    function addReplay()
+        txt = "Replay()"
+        Add(txt)
+    end
+
+    function addLeftClick(X, Y, Times, Delay, Hold)
+        if X == nil then
+            X = 100
+        end
+        if Y == nil then
+            Y = 100
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Delay == nil then
+            Delay = 0
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "LeftClick("..X..","..Y..","..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+
+    function addRightClick(X, Y, Times, Delay, Hold)
+        if X == nil then
+            X = 100
+        end
+        if Y == nil then
+            Y = 100
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Delay == nil then
+            Delay = 0
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "RightClick("..X..","..Y..","..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+
+    function addA(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "A("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addB(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "B("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addC(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "C("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addD(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "D("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addE(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "E("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addF(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "F("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addG(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "G("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addH(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "H("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addI(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "I("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addJ(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "J("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addK(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "K("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addL(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "L("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addM(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "M("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addN(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "N("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addO(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "O("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addP(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "P("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addQ(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "Q("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addR(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "R("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addS(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "S("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addT(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "T("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addU(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "U("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addV(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "V("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addW(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "W("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addX(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "X("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addY(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "Y("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
+    function addZ(Times, Delay, Hold)
+        if Delay == nil then
+            Delay = 0
+        end
+        if Times == nil then
+            Times = 1
+        end
+        if Hold == nil then
+            Hold = 0
+        end
+        txt = "Z("..Times..","..Delay..","..Hold..")"
+        Add(txt)
+    end
 end
