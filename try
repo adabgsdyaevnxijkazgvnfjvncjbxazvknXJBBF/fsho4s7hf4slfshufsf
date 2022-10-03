@@ -1,7 +1,7 @@
-local Lib = {}
+local DiscordLib = {}
 
-function Lib:try()
+function DiscordLib:try(e)
     print("ee")
 end
 
-return Lib
+return DiscordLib
