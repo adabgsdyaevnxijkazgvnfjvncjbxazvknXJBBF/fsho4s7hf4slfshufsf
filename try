@@ -1,10 +1,4 @@
-print("loaded")
-
-local DiscordLib = {}
-
-
-function DiscordLib:Window(text)
+print("ok")
+function dd()
     print("ee")
 end
-
-return DiscordLib
