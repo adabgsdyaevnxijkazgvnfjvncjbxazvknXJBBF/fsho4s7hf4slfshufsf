@@ -3,7 +3,10 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or game:GetService("Ma
     local vu = game:GetService("VirtualUser")
     local vim = game:service("VirtualInputManager")
 
-    print("try2")
+    print("try3")
+    local function try()
+        print("ey")
+    end
     local function GetTo(x,y,z)
         if x and y and z then
             local start = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
